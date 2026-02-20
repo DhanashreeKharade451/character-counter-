@@ -4,29 +4,42 @@ import { useState, useEffect } from "react";
 import type { CharacterCounterProps, TextStats } from "../../types";
 import { TextInput } from "../../TextInput";
 import { StatsDisplay } from "../StatsDisplay/StatsDisplay";
+import { Stats } from "fs";
 
 
-function CharacterCounter() {
-  // Initialize state: count starts at 0
-  const [count, setCount] = useState(0); // TypeScript infers 'count' is a number
+export const CharacterCounter: React.FC<CharacterCounterProps> =({
+   minWords =25,
+  maxWords =100,
+  targetReadingTime = 1,
+}) => {
+  
+  const [text, setText] =useState("");
 
-  // Function to handle button click
-  const increment = () => {
-    // Use the setter function to update the state
-    // Pass the new value directly
-    setCount(count + 1);
-    // Note: Avoid count++ or ++count - modify state via the setter!
-  };
+  const calculateStates = (input:string): TextStates =>{
+    const characterCount = input.length;
 
-  const decrement = () => {
-    setCount(count - 1);
+    const wordArray = input.trim().split(/\s+/).filter(Boolean);
+    const wordCount =input.trim() === "" ? 0 :wordArray.length;
+
+    const readingTime = Math.floor(wordCount / 200);
+
+    return{
+        characterCount,
+      wordCount,
+      readingTime,
+    }
+  
   };
 
   return (
-    <div>
-      characterCount
-      wordCount
-      readingTime
+    <div >
+       <h1> Character Counter </h1>
+
+       <TextInput  onTextChange={setText}/>
+
+       <StatsDisplay
+       stats = {Stats} 
+       />
     </div>
   );
 }
