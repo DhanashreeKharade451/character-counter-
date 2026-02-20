@@ -1,10 +1,12 @@
 import React from 'react';
 import type { TextInputProps } from '../../types';
  
-export const TextInput: React.FC<TextInputProps> = ({
+export const TextInput: React.FC<TextInputProps> = ({  
   onTextChange,
-  placeholder = 'Start typing...',
+  placeholder = 'Start typing your content here...',
   initialValue = ''
+
+  
 }) => {
   return (
     <div className="w-full">
@@ -15,6 +17,8 @@ export const TextInput: React.FC<TextInputProps> = ({
         onChange={(e) => onTextChange(e.target.value)}
         rows={6}
       />
+
+      
     </div>
   );
 };

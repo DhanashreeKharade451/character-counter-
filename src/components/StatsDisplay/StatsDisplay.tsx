@@ -9,7 +9,7 @@ export const StatsDisplay: React.FC<StatsDisplayProps> = ({
    //const {characterCount, wordCount, readingTime} = stats
 
   return (
-    <div>
+    <div className="w-full p-4 border border-black-500 ">
         <div>
             <h3>Characters</h3>
             <p>{stats.characterCount}</p>
