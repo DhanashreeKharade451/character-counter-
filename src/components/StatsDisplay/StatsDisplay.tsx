@@ -24,8 +24,16 @@ export const StatsDisplay: React.FC<StatsDisplayProps> = ({
         return `${mins}:${seconds.toString().padStart(2,"0")}`;
     };
 
-    //const wordStatusColor =
-   //const {characterCount, wordCount, readingTime} = stats
+    // Word goal color feedback
+  const wordColor =
+    wordCount < minWords
+      ? "text-red-500"
+      : wordCount > maxWords
+      ? "text-yellow-500"
+      : "text-green-600";
+
+  // Progress percentage
+  const progress = Math.min((wordCount / maxWords) * 100, 100);
 
   return (
 
