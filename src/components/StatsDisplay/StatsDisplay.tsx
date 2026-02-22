@@ -1,20 +1,16 @@
 //Create a StatsDisplay component that shows various statistics about the text.
 import React, { useState } from "react";
-import type { StatsDisplayProps, TextStats} from "../../types";
+import type { StatsDisplayProps} from "../../types";
 
 
 export const StatsDisplay: React.FC<StatsDisplayProps> = ({
+    stats,
    showReadingTime = true,
    minWords = 0,
    maxWords = 100,
    targetReadingTime,
 
 }) => {
-
-    const[stats, setStats] = useState<TextStats>({
-        characterCount: 0, 
-        wordCount: 0, 
-        readingTime: 0});
 
     const {characterCount, wordCount, readingTime } = stats;
 
@@ -25,15 +21,15 @@ export const StatsDisplay: React.FC<StatsDisplayProps> = ({
     };
 
     // Word goal color feedback
-  const wordColor =
-    wordCount < minWords
-      ? "text-red-500"
-      : wordCount > maxWords
-      ? "text-yellow-500"
-      : "text-green-600";
+//   const wordColor =
+//     wordCount < minWords
+//       ? "text-red-500"
+//       : wordCount > maxWords
+//       ? "text-yellow-500"
+//       : "text-green-600";
 
   // Progress percentage
-  const progress = Math.min((wordCount / maxWords) * 100, 100);
+//   const progress = Math.min((wordCount / maxWords) * 100, 100);
 
   return (
 

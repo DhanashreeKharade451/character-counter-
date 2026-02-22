@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import type { CharacterCounterProps, TextStats } from "../../types";
-
 import { StatsDisplay } from "../StatsDisplay/StatsDisplay.tsx";
+import { TextInput } from "../../TextInput.tsx";
 
 export const CharacterCounter: React.FC<CharacterCounterProps> = ({
   minWords = 25,
@@ -26,7 +26,7 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({
     const wordCount = input.trim() === "" ? 0 : wordArray.length;
 
     //Average Reading speed =200 word per minute
-    const readingTime = Math.floor(wordCount / 200);
+    const readingTime = wordCount / 200;
 
     return {
       characterCount,
@@ -36,23 +36,28 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({
   };
 
   //Calculate States whenever text changes
-  // useEffect(()=>{
-  //   setStats(calculateStats(text));
-  // },[text]);
+  useEffect(()=>{
+    setStats(calculateStats(text));
+  },[text]);
 
 
   return (
     <>
+    
       <div className="w-full">
-        <textarea
+        <TextInput
+        onTextChange={setText}
+        placeholder="Start writing your article..."
+      />
+        {/* <textarea
           className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 min-h-[200px] resize-y bg-white"
           placeholder="Start typing your content here..."
-          onTextChange = {setText}
+          
                  
-        ></textarea>
+        ></textarea> */}
       </div>
 
-      <StatsDisplay
+            <StatsDisplay
         stats={stats}
         minWords={minWords}
         maxWords={maxWords}
