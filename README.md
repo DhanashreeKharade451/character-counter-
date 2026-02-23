@@ -1,6 +1,6 @@
 Answers for Reflection Questions:
 ///////////////////////////////////////////////////////////////
-How did you handle state updates when the text changed?
+Q.1 How did you handle state updates when the text changed?
 
 State updates were handled using React’s useState hook inside the CharacterCounter component.
 const [text, setText] = useState("");
@@ -46,10 +46,46 @@ Reading time is formatted into mm:ss format:
 const mins = Math.floor(minutes);
 const seconds = Math.round((minutes - mins) * 60);
 
-*****************************************************************************************************
-How did you ensure the UI remained responsive during rapid text input?
-What challenges did you face when implementing the statistics calculations?
+************************************************************************************
+Q 3.How did you ensure the UI remained responsive during rapid text input?
 
+✔ Lightweight Calculations
+
+input.length,
+split(),
+basic arithmetic
+
+are computationally inexpensive.
+
+✔ No useEffect or Heavy Logic
+
+Statistics are derived directly during render:  const stats = calculateStats(text);
+
+Since the app has:
+
+No API calls
+
+No expensive loops
+
+No heavy processing
+
+It remains responsive even during fast typing.
+
+
+************************************************************************************
+Q.4 What challenges did you face when implementing the statistics calculations?
+
+Challenge:
+
+Multiple spaces
+Empty strings
+New lines
+
+Solution:
+Used regex split with filtering:
+
+input.trim().split(/\s+/).filter(Boolean)
+This ensures accurate word counting.
 ********************************************************************************
 # React + TypeScript + Vite
 
