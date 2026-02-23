@@ -1,3 +1,31 @@
+Answers for Reflection Questions:
+**********************************
+How did you handle state updates when the text changed?
+
+State updates were handled using React’s useState hook inside the CharacterCounter component.
+const [text, setText] = useState("");
+
+The TextInput component receives a callback function:
+<TextInput onTextChange={setText} />
+
+When the user types inside the textarea:
+onChange={(e) => onTextChange(e.target.value)}
+
+The updated text is passed to setText, which updates the state in the parent component.
+
+Because React re-renders when state changes:
+
+The component recalculates statistics
+
+Updated values are passed to StatsDisplay
+
+The UI updates automatically in real time
+***************************************************************************
+What considerations did you make when calculating reading time?
+How did you ensure the UI remained responsive during rapid text input?
+What challenges did you face when implementing the statistics calculations?
+
+********************************************************************************
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

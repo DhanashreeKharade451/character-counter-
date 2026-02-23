@@ -1,10 +1,7 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
-import { TextInput } from './TextInput'
-import type { TextInputProps } from './types'
-import type { StatsDisplay } from './components/StatsDisplay/StatsDisplay.tsx'
 import CharacterCounter from './components/CharacterCounter/CharacterCounter'
 
 
