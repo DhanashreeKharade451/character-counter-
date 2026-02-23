@@ -1,5 +1,5 @@
 Answers for Reflection Questions:
-**********************************
+///////////////////////////////////////////////////////////////
 How did you handle state updates when the text changed?
 
 State updates were handled using React’s useState hook inside the CharacterCounter component.
@@ -21,7 +21,32 @@ Updated values are passed to StatsDisplay
 
 The UI updates automatically in real time
 ***************************************************************************
-What considerations did you make when calculating reading time?
+
+Q2. What considerations did you make when calculating reading time?
+Ans:
+
+Reading time was calculated using the standard average reading speed:
+
+200 words per minute
+
+const readingTime = wordCount / 200;
+
+✔ Handle Empty Input
+If the input is empty, word count is set to 0, preventing division issues.
+
+✔ Remove Extra Spaces
+input.trim().split(/\s+/).filter(Boolean)
+
+This ensures:  Multiple spaces don’t count as extra words
+                Leading/trailing spaces don’t inflate word count
+
+✔ User-Friendly Formatting
+
+Reading time is formatted into mm:ss format:
+const mins = Math.floor(minutes);
+const seconds = Math.round((minutes - mins) * 60);
+
+*****************************************************************************************************
 How did you ensure the UI remained responsive during rapid text input?
 What challenges did you face when implementing the statistics calculations?
 
